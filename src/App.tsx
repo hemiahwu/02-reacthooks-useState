@@ -1,8 +1,10 @@
+import { useState } from "react";
+
 function App() {
-  let count = 0;
+  const [count, setCount] = useState<number>(0);
 
   const handleCount = (num: number) => {
-    count += num;
+    setCount(count + num);
     console.log(count);
   };
   return (
