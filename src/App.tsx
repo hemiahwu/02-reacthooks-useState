@@ -1,29 +1,37 @@
 import { useState } from "react";
 
-// 抽离回调 将会每次状态变化都执行
 const initialValue = () => {
   console.log("initial value");
   return 0;
 };
 
 function App() {
-  // 回调只在初始化时执行一次
-  const [count, setCount] = useState<number>(() => initialValue());
-
-  // 返回值是数组
-  const arr = useState("hello world");
-  console.log(arr);
+  interface State {
+    count: number;
+    name: string;
+  }
+  const [state, setState] = useState<State>({ count: 0, name: "个" });
+  const { count, name } = state;
 
   const handleCount = (num: number) => {
-    setCount(count + num);
-    console.log(count);
+    // setCount(count + num);
+    // setCount(count + num);
+    // setCount((prevCount) => prevCount + num);
+    // setCount((prevCount) => prevCount + num);
+
+    setState((prevState: State) => {
+      return { ...prevState, count: prevState.count + num };
+    });
   };
   return (
     <>
       <button className="btn" onClick={() => handleCount(-1)}>
         -
       </button>
-      <span>{count}</span>
+      <span>
+        {count}
+        {name}
+      </span>
       <button className="btn" onClick={() => handleCount(1)}>
         +
       </button>
