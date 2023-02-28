@@ -1,41 +1,40 @@
 import { useState } from "react";
 
-const initialValue = () => {
-  console.log("initial value");
-  return 0;
-};
+interface Data {
+  id: number;
+  name: string;
+}
+
+const data: Data[] = [
+  { id: 1, name: "米斯特吴" },
+  { id: 2, name: "米修在线" },
+  { id: 3, name: "老吴" },
+  { id: 4, name: "波哥" },
+];
 
 function App() {
-  interface State {
-    count: number;
-    name: string;
-  }
-  const [state, setState] = useState<State>({ count: 0, name: "个" });
-  const { count, name } = state;
-
-  const handleCount = (num: number) => {
-    // setCount(count + num);
-    // setCount(count + num);
-    // setCount((prevCount) => prevCount + num);
-    // setCount((prevCount) => prevCount + num);
-
-    setState((prevState: State) => {
-      return { ...prevState, count: prevState.count + num };
-    });
+  const [people, setPeople] = useState<Data[]>(data);
+  const removeItem = (id: number) => {
+    let newPeople = people.filter((person: Data) => person.id !== id);
+    setPeople(newPeople);
   };
+
   return (
-    <>
-      <button className="btn" onClick={() => handleCount(-1)}>
-        -
+    <div className="container">
+      {people.map((person) => {
+        const { id, name } = person;
+        return (
+          <div key={id} className="item">
+            <h4>{name}</h4>
+            <button onClick={() => removeItem(id)}>删除</button>
+          </div>
+        );
+      })}
+      {/* 清除所有 */}
+      <button className="btn" onClick={() => setPeople([])}>
+        清除所有
       </button>
-      <span>
-        {count}
-        {name}
-      </span>
-      <button className="btn" onClick={() => handleCount(1)}>
-        +
-      </button>
-    </>
+    </div>
   );
 }
 
