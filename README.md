@@ -1,4 +1,16 @@
-# React-Hooks
+# 02-React-Hooks-useState
+
+## 第一章 课程代码
+
+Git仓库地址: https://github.com/hemiahwu/02-reacthooks-useState
+
+百度网盘链接: https://pan.baidu.com/s/1waHFb70Dh0ZtrB2cRhARfA?pwd=vtg7 提取码: vtg7
+
+
+
+课程答疑微信: 
+
+<img src="https://i.postimg.cc/YCWHJWTw/Wechat-IMG233.jpg" alt="WechatIMG233"  />
 
 ## 1. 为什么要使用 useState
 
@@ -115,7 +127,7 @@ console.log(arr);
 
 - 任意 state 发生变化, 组件都将重新渲染 点击+-测试
 
-​
+
 
 - 状态值 回调函数 回调只在初始化时执行一次
 
